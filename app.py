@@ -12,6 +12,7 @@ model_dir = './experiments/base_model_with_bigru_crf'
 model_config_path = './experiments/base_model_with_bigru_crf/config.json'
 vocab_pickle_path = './experiments/base_model_with_bigru_crf/vocab.pkl'
 ner_to_index_path = './experiments/base_model_with_bigru_crf/ner_to_index.json'
+
 class DecoderFromNamedEntitySequence():
     def __init__(self, tokenizer, index_to_ner):
         self.tokenizer = tokenizer
@@ -175,7 +176,8 @@ def model_predict(text):
 app = Flask(__name__)
 
 @app.route('/desc',methods=['POST'])
-def predict_algorithm() :
+def predict_algorithm():
+
     # using post method
     # get json data from front side
 
@@ -189,6 +191,8 @@ def predict_algorithm() :
 
     # 모델로 결과 예측
     json_result = model_predict(text)
+
+    
 
 if __name__ == "__main__" :
     print('두개의 모델을 로드해야 합니다. 조금 기다려주세요')
